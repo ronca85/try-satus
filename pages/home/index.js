@@ -67,6 +67,30 @@ export default function Home() {
           <span className={s.item}>HOLA JORDAN</span>
         </MarqueeScroll>
         <Link href="#kinesis">scroll to kinesis</Link>
+        <Marquee
+          className={s.marquee}
+          repeat={3}
+          onMouseOver={() => {
+            console.log(Marquee)
+          }}
+        >
+          {devs.map(({ image, name, position }, idx) => (
+            <Link href="#" className={s['slide']} key={`slide-item-${idx}`}>
+              <div className={s['slide-inner']}>
+                <Image
+                  src={image}
+                  alt=""
+                  width="300"
+                  height="300"
+                  className={s['slide-img']}
+                  size="20vw"
+                />
+                <p className={s['slide-title']}>{name}</p>
+                <p className={s['slide-text']}>{position}</p>
+              </div>
+            </Link>
+          ))}
+        </Marquee>
         <Accordion.Root type="single" collapsible>
           {Array(2)
             .fill({ header: 'this is header', body: 'this is body' })
